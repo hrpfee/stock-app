@@ -24,7 +24,13 @@ export default function StockChart({ data, isPositive, currency = "USD", config 
   // 指標の表示数に応じて高さを調整（軸を表示するスペースを確保するため少し余裕を持たせる）
   const subChartCount = [config.macd, config.rsi].filter(Boolean).length;
   const mainHeight = subChartCount === 2 ? 'h-[48%]' : subChartCount === 1 ? 'h-[60%]' : 'h-[90%]';
-
+if (!data || !Array.isArray(data) || data.length === 0) {
+    return (
+      <div className="h-full w-full flex items-center justify-center bg-slate-900/10 rounded-2xl border border-slate-800 border-dashed">
+        <p className="text-slate-600 text-xs font-black uppercase tracking-widest">Waiting for Chart Data...</p>
+      </div>
+    );
+  }
   return (
     <div className="w-full h-full flex flex-col space-y-4 overflow-y-auto pr-1 custom-scrollbar">
       
@@ -62,7 +68,23 @@ export default function StockChart({ data, isPositive, currency = "USD", config 
             )}
             
             <Tooltip 
-              contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #334155', borderRadius: '8px', fontSize: '11px' }} 
+              contentStyle={{ 
+                backgroundColor: '#1e293b', 
+                border: 'none', 
+                borderRadius: '6px', 
+                boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.3)' 
+              }} 
+              labelStyle={{ 
+                color: '#ffffff', // ✅ 日付を白に
+                fontWeight: 'bold', 
+                fontSize: '11px',
+                marginBottom: '4px'
+              }}
+              itemStyle={{ 
+                color: '#94a3b8',
+                fontSize: '11px',
+                padding: '2px 0'
+              }}
             />
             
             {config.bb && (

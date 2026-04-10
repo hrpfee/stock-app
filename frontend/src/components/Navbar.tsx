@@ -18,11 +18,8 @@ export default function Navbar() {
         
         {/* ✅ 左上のアプリ名・ロゴ：クリックでホームに戻る */}
         <Link href="/" className="flex items-center gap-2 group cursor-pointer transition-all active:scale-95">
-          <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center font-black text-white text-xs shadow-lg shadow-blue-500/20 group-hover:bg-blue-500 transition-colors">
-            G
-          </div>
-          <span className="font-black italic text-white tracking-tighter group-hover:text-blue-400 transition-colors">
-            GEMINI TERMINAL
+          <span className="font-black italic text-white tracking-tighter group-hover:text-white transition-colors">
+            Stock Analysis
           </span>
         </Link>
 
@@ -33,7 +30,7 @@ export default function Navbar() {
               key={item.href} 
               href={item.href}
               className={`px-4 py-1 rounded-md text-[10px] font-black uppercase tracking-widest transition-all
-                ${pathname === item.href ? "text-blue-500 bg-blue-500/10" : "text-slate-500 hover:text-slate-200"}`}
+                ${pathname === item.href ? "text-white bg-white-500/10" : "text-slate-500 hover:text-slate-200"}`}
             >
               {item.name}
             </Link>
